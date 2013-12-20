@@ -34,7 +34,7 @@ EOS
   end
 
   def test_number_of_days_returns_correct_number_in_leap_year
-    assert_equal 28, number_of_days("february", 2012)
+    assert_equal 29, number_of_days("february", 2012)
     assert_equal 30, number_of_days("april", 2012)
     assert_equal 30, number_of_days("june", 2012)
     assert_equal 30, number_of_days("september", 2012)
