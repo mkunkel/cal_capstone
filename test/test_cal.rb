@@ -3,19 +3,13 @@ require 'minitest/autorun'
 
 class TestCal < MiniTest::Unit::TestCase
   def test_a_month_in_a_non_leap_year
-    shell_output = `ruby cal.rb 2 2013`
-    expected_output = <<EOS
-   February 2013
-Su Mo Tu We Th Fr Sa
-                1  2
- 3  4  5  6  7  8  9
-10 11 12 13 14 15 16
-17 18 19 20 21 22 23
-24 25 26 27 28
+    expected_output = `cal 2 2013`
+    assert_equal expected_output, get_month_text('february', 2013)
+  end
 
-
-EOS
-    assert_equal expected_output, shell_output
+  def test_a_month_in_a_leap_year
+    expected_output = `cal 2 2012`
+    assert_equal expected_output, get_month_text("february", 2012)
   end
 
   def test_number_of_days_returns_correct_number
@@ -55,5 +49,10 @@ EOS
     assert_equal false, is_leap_year?(1900)
   end
 
+  def test_get_date_line
+    assert_equal " 1  2  3  4  5  6  7  \n", get_date_line(1,8)
+    assert_equal " 1  2  3  4  5  6  7  \n", get_date_line(1,7)
+    assert_equal "    1  2  3  4  5  6  \n", get_date_line(1,7,1)
+  end
 
 end

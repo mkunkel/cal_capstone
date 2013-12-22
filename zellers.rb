@@ -1,12 +1,14 @@
 class Zellers
   CENTURY_LENGTH_IN_YEARS = 100
   def self.get_day(date_string)
-
+    # puts date_string
     date_array = date_string.split "/"
     month = date_array[0].to_i
+    year = date_array[2].to_i
+    year -= 1 if month < 3
+    # puts month + 12 if month < 3
     month += 12 if month < 3
     day = date_array[1].to_i
-    year = date_array[2].to_i
     year_of_century = year % CENTURY_LENGTH_IN_YEARS
     century = (year / CENTURY_LENGTH_IN_YEARS).floor
 
@@ -37,5 +39,10 @@ class Zellers
 
     day_strings[zeller_num]
   end
+
+  def self.days_from_sunday zeller_num
+    [6,0,1,2,3,4,5][zeller_num]
+  end
+
 end
 
