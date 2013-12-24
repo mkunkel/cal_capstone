@@ -5,8 +5,8 @@ class Zellers
     date_array = date_string.split "/"
     month = date_array[0].to_i
     year = date_array[2].to_i
+    # puts "month " + month.to_s + ", year " + year.to_s
     year -= 1 if month < 3
-    # puts month + 12 if month < 3
     month += 12 if month < 3
     day = date_array[1].to_i
     year_of_century = year % CENTURY_LENGTH_IN_YEARS
@@ -24,6 +24,7 @@ class Zellers
 
     zeller_math = 0
     formula.each {|num| zeller_math += num }
+    puts zeller_math % 7
     zeller_math % 7
   end
 
