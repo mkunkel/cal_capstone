@@ -29,13 +29,13 @@ class TestZellers < MiniTest::Unit::TestCase
   end
 
   def test_zellers_days_from_sunday
-    assert_equal 6, Zellers.days_from_sunday(0)
-    assert_equal 0, Zellers.days_from_sunday(1)
-    assert_equal 1, Zellers.days_from_sunday(2)
-    assert_equal 2, Zellers.days_from_sunday(3)
-    assert_equal 3, Zellers.days_from_sunday(4)
-    assert_equal 4, Zellers.days_from_sunday(5)
-    assert_equal 5, Zellers.days_from_sunday(6)
+    assert_equal 5, Zellers.days_from_sunday(0)
+    assert_equal 6, Zellers.days_from_sunday(1)
+    assert_equal 0, Zellers.days_from_sunday(2)
+    assert_equal 1, Zellers.days_from_sunday(3)
+    assert_equal 2, Zellers.days_from_sunday(4)
+    assert_equal 3, Zellers.days_from_sunday(5)
+    assert_equal 4, Zellers.days_from_sunday(6)
   end
 
   def test_zellers_has_a_get_day_as_string_method
