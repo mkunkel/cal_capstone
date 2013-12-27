@@ -2,15 +2,16 @@ require_relative 'zellers'
 require_relative 'date_parser'
 WEEK_LENGTH = 7
 class CalHelper
-  def self.get_month_text month, year
-    month = month.capitalize
+  def self.get_month_text month, year, display_year = true
     start_day = Zellers.get_day month.to_s + '/1/' + year.to_s
     start_day = Zellers.days_from_sunday start_day
     month_days = number_of_days month, year
-    output = "#{month} #{year}".center(20) + "  "
-    output << "\nSu Mo Tu We Th Fr Sa  \n"
+    year_string = display_year ? " #{year}" : ""
+    output = []
+    output << "#{get_month_name month}#{year_string}".center(20) + "  "
+    output << "Su Mo Tu We Th Fr Sa  "
 
-    output << self.get_date_line(1, month_days, start_day)
+    output << get_date_line(1, month_days, start_day)
     5.times do |index|
       start = WEEK_LENGTH - (start_day - 1) + (WEEK_LENGTH * index)
       output << get_date_line(start, month_days, 0)
@@ -34,18 +35,16 @@ class CalHelper
         output << next_num.to_s
       end
     end
-    return output + "  \n"
+    return output + "  "
   end
 
   def self.number_of_days month, year
-    month = month.downcase
-
-    if month == 'february'
+    if month == 2
       # puts is_leap_year?(year)
       is_leap_year?(year) ? 29 : 28
-    elsif ['april', 'june', 'september', 'november'].index(month)
+    elsif [4, 6, 9, 11].index(month)
       30
-    elsif ['june', 'september', 'november', 'january', 'march', 'may', 'july', 'august', 'october', 'december'].index(month)
+    elsif [1, 3, 5, 7, 8, 10, 12].index(month)
       31
     end
   end
@@ -61,5 +60,19 @@ class CalHelper
     else
       false
     end
+  end
+
+  def self.get_month_name month
+    month_array = ['January', 'February', 'March', 'April',
+                   'May', 'June', 'July', 'August', 'September',
+                   'October', 'November', 'December'
+                  ][month - 1]
+  end
+
+  def self.put_months_array months
+    months = months.transpose
+    months.each { |month_line|
+      puts month_line.join("") # + "  "
+    }
   end
 end

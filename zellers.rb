@@ -34,7 +34,8 @@ class Zellers
   end
 
   def self.days_from_sunday zeller_num
-    [5,6,0,1,2,3,4][zeller_num]
+    # [5,6,0,1,2,3,4][zeller_num]
+    [6,0,1,2,3,4,5][zeller_num]
   end
 
 end
