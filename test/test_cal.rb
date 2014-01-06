@@ -62,9 +62,9 @@ class TestCal < MiniTest::Unit::TestCase
     assert_equal `cal 2 2015`, `ruby cal.rb 2 2015`
     assert_equal `cal 2 1900`, `ruby cal.rb 2 1900`
     assert_equal `cal 2 2000`, `ruby cal.rb 2 2000`
-    # assert_raises ArgumentError do
-    #   `ruby cal.rb`
-    # end
+    assert_raises ArgumentError do
+      `ruby cal.rb`
+    end
     # assert_equal `cal 2 1799`, `ruby cal.rb 2 1799`
     # assert_equal `cal 2 3001`, `ruby cal.rb 2 3001`
   end
