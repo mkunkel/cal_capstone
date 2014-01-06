@@ -4,8 +4,6 @@ raise ArgumentError.new("Cal expects 1 or 2 arguments, you provided 0") if ARGV.
 raise ArgumentError.new("Cal expects 1 or 2 arguments, you provided #{ARGV.length}") if ARGV.length > 2
 
 if ARGV.length == 1
-  # puts ARGV[0]
-  # raise RangeError.new("Cal works for years 1800-3000, you provided #{ARGV[0]}") unless (1800..3000).include?(ARGV[0].to_i)
   # Assume user supplied only a year
   months = []
   12.times do |index|

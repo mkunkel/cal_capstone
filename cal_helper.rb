@@ -40,7 +40,6 @@ class CalHelper
 
   def self.number_of_days month, year
     if month == 2
-      # puts is_leap_year?(year)
       is_leap_year?(year) ? 29 : 28
     elsif [4, 6, 9, 11].index(month)
       30
