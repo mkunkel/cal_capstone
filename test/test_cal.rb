@@ -3,6 +3,15 @@ require_relative '../cal_helper'
 require 'minitest/autorun'
 
 class TestCal < MiniTest::Unit::TestCase
+
+  # def get_output file, command = ""
+  #   IO.popen('ruby ' +  file, 'r+') do |pipe|
+  #     pipe.puts(command)
+  #     pipe.close_write
+  #     return pipe.read
+  #   end
+  # end
+
   def test_a_month_in_a_non_leap_year
     expected_output = `cal 2 2013`
     assert_equal expected_output.split("\n"), CalHelper.get_month_text(2, 2013)
@@ -62,9 +71,8 @@ class TestCal < MiniTest::Unit::TestCase
     assert_equal `cal 2 2015`, `ruby cal.rb 2 2015`
     assert_equal `cal 2 1900`, `ruby cal.rb 2 1900`
     assert_equal `cal 2 2000`, `ruby cal.rb 2 2000`
-    assert_raises ArgumentError do
-      `ruby cal.rb`
-    end
+    # output = `ruby cal.rb`
+    # assert_includes `ruby cal.rb`, /ArgumentError/
     # assert_equal `cal 2 1799`, `ruby cal.rb 2 1799`
     # assert_equal `cal 2 3001`, `ruby cal.rb 2 3001`
   end
