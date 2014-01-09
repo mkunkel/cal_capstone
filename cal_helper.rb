@@ -59,10 +59,7 @@ class CalHelper
   end
 
   def self.get_month_name month
-    month_array = ['January', 'February', 'March', 'April',
-                   'May', 'June', 'July', 'August', 'September',
-                   'October', 'November', 'December'
-                  ][month - 1]
+    CalHelper.month_array[month - 1]
   end
 
   def self.put_months_array months
@@ -70,5 +67,12 @@ class CalHelper
     months.each { |month_line|
       puts month_line.join("") # + "  "
     }
+  end
+
+  def self.month_array
+    ['January', 'February', 'March', 'April',
+     'May', 'June', 'July', 'August', 'September',
+     'October', 'November', 'December'
+    ]
   end
 end

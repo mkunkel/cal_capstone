@@ -20,12 +20,7 @@ if ARGV.length == 1
 
 elsif ARGV.length == 2
   if ARGV[0].index(/[a-zA-Z]/)
-    month_array = ['january', 'february', 'march', 'april',
-                   'may', 'june', 'july', 'august', 'september',
-                   'october', 'november', 'december'
-                  ]
-
-    month = month_array.index(ARGV[0].downcase) + 1 # add 1 to month to index from 1 instead of 0
+    month = CalHelper.month_array.index(ARGV[0].capitalize) + 1 # add 1 to month to index from 1 instead of 0
   else
     if (1..12).include?(ARGV[0].to_i)
       month = ARGV[0].to_i

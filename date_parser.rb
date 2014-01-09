@@ -1,3 +1,5 @@
+require_relative 'cal_helper'
+
 class DateParser
   def self.parse(date_string)
     date_string = date_string.gsub /\W+/, "/"
@@ -24,7 +26,7 @@ class DateParser
       elsif item.count("a-z") > 0 and item.count("0-9") > 0
         item.gsub! /\D/, ""
       end
-      item.gsub /\A0+/, ""
+      item.to_s.gsub /\A0+/, ""
     }
 
     if date_array[0].to_i > 12 # this number must be a day
@@ -35,33 +37,8 @@ class DateParser
   end
 
   def self.month_name_to_number name
-    case name.downcase
-    when 'january'
-      '1'
-    when 'february'
-      '2'
-    when 'march'
-      '3'
-    when 'april'
-      '4'
-    when 'may'
-      '5'
-    when 'june'
-      '6'
-    when 'july'
-      '7'
-    when 'august'
-      '8'
-    when 'september'
-      '9'
-    when 'october'
-      '10'
-    when 'november'
-      '11'
-    when 'december'
-      '12'
-    end
-
+    number = CalHelper.month_array.index(name.capitalize)
+    number += 1 # compensate for 0 index
   end
 end
 
