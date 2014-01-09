@@ -21,7 +21,6 @@ class CalHelper
 
   def self.get_date_line start_from, max, offset = 0
     output = ''
-    counter = 0
     7.times do |index|
       output << ' ' unless index == 0
       next_num = start_from + index - offset
@@ -29,7 +28,7 @@ class CalHelper
         output << '  '
       elsif next_num > max
         output << '  '
-      elsif next_num < 10
+      elsif next_num.to_s.length == 1
         output << ' ' + next_num.to_s
       else
         output << next_num.to_s
