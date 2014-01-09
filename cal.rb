@@ -3,6 +3,8 @@ require_relative 'cal_helper'
 raise ArgumentError.new("Cal expects 1 or 2 arguments, you provided 0") if ARGV.length == 0
 raise ArgumentError.new("Cal expects 1 or 2 arguments, you provided #{ARGV.length}") if ARGV.length > 2
 SPACES_TO_YEAR = 28
+NUMBER_OF_QUARTERS = 4
+MONTHS_IN_QUARTER = 3
 if ARGV.length == 1
   # Assume user supplied only a year
   months = []
@@ -12,10 +14,10 @@ if ARGV.length == 1
 
   puts "#{' '*SPACES_TO_YEAR}#{ARGV[0]}"
   quarters = []
-  months.each_slice(3) { |month| quarters << month }
-  4.times do |index|
+  months.each_slice(MONTHS_IN_QUARTER) { |month| quarters << month }
+  NUMBER_OF_QUARTERS.times do |index|
     CalHelper.put_months_array quarters[index]
-    puts "\n" unless index == 3
+    puts "\n" unless index == NUMBER_OF_QUARTERS - 1 # compensate for 0 index
   end
 
 elsif ARGV.length == 2
