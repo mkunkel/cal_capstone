@@ -24,9 +24,7 @@ class CalHelper
     7.times do |index|
       output << ' ' unless index == 0
       next_num = start_from + index - offset
-      if index < offset
-        output << '  '
-      elsif next_num > max
+      if index < offset or next_num > max
         output << '  '
       elsif next_num.to_s.length == 1
         output << ' ' + next_num.to_s
@@ -40,9 +38,9 @@ class CalHelper
   def self.number_of_days month, year
     if month == 2
       is_leap_year?(year) ? 29 : 28
-    elsif [4, 6, 9, 11].index(month)
+    elsif [4, 6, 9, 11].include?(month)
       30
-    elsif [1, 3, 5, 7, 8, 10, 12].index(month)
+    elsif [1, 3, 5, 7, 8, 10, 12].include?(month)
       31
     end
   end
